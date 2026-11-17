@@ -25,7 +25,7 @@ describe("@gdesignsystem/theme gds-tokens smoke", () => {
     expect(fg.DEFAULT?.value?.base).toBe("#27272a");
     expect(fg.DEFAULT?.value?._light).toBe("{colors.gray.800}");
     expect(fg.muted?.value?.base).toBe("#52525b");
-    expect(fg.subtle?.value?.base).toBe("#a1a1aa");
+    expect(fg.subtle?.value?.base).toBe("#71717a");
 
     expect(fg.DEFAULT, "missing fg.DEFAULT").toBeTruthy();
     expect(fg.muted, "missing fg.muted").toBeTruthy();

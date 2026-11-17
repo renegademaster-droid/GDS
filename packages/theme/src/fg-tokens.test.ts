@@ -6,7 +6,7 @@ const FG_LIGHT = "#27272a";
 const FG_DARK = "#fafafa";
 const FG_MUTED_LIGHT = "#52525b";
 const FG_MUTED_DARK = "#a1a1aa";
-const FG_SUBTLE_LIGHT = "#a1a1aa";
+const FG_SUBTLE_LIGHT = "#71717a";
 const FG_SUBTLE_DARK = "#a1a1aa";
 
 describe("fg semantic tokens", () => {
@@ -28,7 +28,7 @@ describe("fg semantic tokens", () => {
 
     expect(muted.base).toBe(FG_MUTED_LIGHT);
     expect(muted._light).toBe("{colors.text.fg_muted}");
-    expect(muted._dark).toBe("{colors.text.fg_subtle}");
+    expect(muted._dark).toBe("{colors.gray.400}");
 
     expect(subtle.base).toBe(FG_SUBTLE_LIGHT);
     expect(subtle._light).toBe("{colors.text.fg_subtle}");
@@ -54,7 +54,7 @@ describe("fg semantic tokens", () => {
     });
     expect(css?.muted?.value).toMatchObject({
       base: FG_MUTED_LIGHT,
-      _dark: "{colors.text.fg_subtle}",
+      _dark: "{colors.gray.400}",
     });
     expect(css?.subtle?.value).toMatchObject({
       base: FG_SUBTLE_LIGHT,
