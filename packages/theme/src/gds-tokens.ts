@@ -108,21 +108,25 @@ export const gdsSemanticColors = {
       value: {
         base: "#52525b",
         _light: "{colors.text.fg_muted}",
-        _dark: "{colors.text.fg_subtle}",
+        // gray/400 is 8.19:1 on black; text/fg_subtle is now gray/500 (4.35:1 on black, light mode only).
+        _dark: "{colors.gray.400}",
       },
     },
     subtle: {
       value: {
-        base: "#a1a1aa",
+        // gray/500 (via text/fg_subtle): 4.83:1 on white (WCAG 1.4.3); gray/400 was 2.56:1.
+        base: "#71717a",
         _light: "{colors.text.fg_subtle}",
         _dark: "{colors.gray.400}",
       },
     },
     inverted: { value: "{colors.text.fg_inverted}" },
-    error: { value: "{colors.text.fg_error}" },
-    warning: { value: "{colors.text.fg_warning}" },
-    success: { value: "{colors.text.fg_success}" },
-    info: { value: "{colors.text.fg_info}" },
+    // Status text: the light values (…/700) are under 4.5:1 on black, so dark mode uses …/400
+    // (6.8–12:1 on black and on the dark status backgrounds below).
+    error: { value: { _light: "{colors.text.fg_error}", _dark: "{colors.red.400}" } },
+    warning: { value: { _light: "{colors.text.fg_warning}", _dark: "{colors.orange.400}" } },
+    success: { value: { _light: "{colors.text.fg_success}", _dark: "{colors.green.400}" } },
+    info: { value: { _light: "{colors.text.fg_info}", _dark: "{colors.blue.400}" } },
   },
   bg: {
     // Light mode: explicit values so bg resolves (avoid white fallback). Dark: gray scale.
@@ -133,10 +137,11 @@ export const gdsSemanticColors = {
     emphasized: { value: { base: "#e4e4e7", _light: "#e4e4e7", _dark: "{colors.gray.800}" } },
     inverted: { value: "{colors.bg.inverted}" },
     panel: { value: { base: "#ffffff", _light: "#ffffff", _dark: "{colors.gray.900}" } },
-    error: { value: "{colors.bg.error}" },
-    warning: { value: "{colors.bg.warning}" },
-    success: { value: "{colors.bg.success}" },
-    info: { value: "{colors.bg.info}" },
+    // Status backgrounds (alerts): dark tints in dark mode so status text stays readable on them.
+    error: { value: { _light: "{colors.bg.error}", _dark: "{colors.red.950}" } },
+    warning: { value: { _light: "{colors.bg.warning}", _dark: "{colors.orange.950}" } },
+    success: { value: { _light: "{colors.bg.success}", _dark: "{colors.green.950}" } },
+    info: { value: { _light: "{colors.bg.info}", _dark: "{colors.blue.950}" } },
   },
   border: {
     // Light mode: explicit light grays so borders stay light (never black). Dark: gray scale.
@@ -144,7 +149,8 @@ export const gdsSemanticColors = {
     default: { value: { base: "#e4e4e7", _light: "#e4e4e7", _dark: "{colors.border.inverted}" } },
     subtle: { value: { base: "#f0f0f2", _light: "#f0f0f2", _dark: "{colors.gray.800}" } },
     muted: { value: { base: "#e8e8ec", _light: "#e8e8ec", _dark: "{colors.gray.700}" } },
-    emphasized: { value: { base: "#d4d4d8", _light: "#d4d4d8", _dark: "{colors.gray.600}" } },
+    // Form field boundaries (WCAG 1.4.11, 3:1): gray/500 is 4.83:1 on white and 4.35:1 on black.
+    emphasized: { value: { base: "#71717a", _light: "#71717a", _dark: "{colors.gray.500}" } },
     inverted: { value: "{colors.border.inverted}" },
     error: { value: "{colors.border.error}" },
     warning: { value: "{colors.border.warning}" },
